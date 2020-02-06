@@ -1,0 +1,37 @@
+---
+- name: Install packages needed for Innotop
+  apt:
+    name: "{{ innotop_packages }}"
+    state: present
+
+- name: Download Innotop tarball
+  get_url:
+    dest: /tmp
+    mode: 0640
+    url: https://github.com/innotop/innotop/archive/v{{ innotop_version }}.tar.gz
+
+- name: Unarchive Innotop tarball
+  unarchive:
+    copy: false
+    dest: /tmp
+    src: /tmp/innotop-{{ innotop_version }}.tar.gz
+
+- name: Generate Innotop makefile
+  command: perl Makefile.PL
+  args:
+    chdir: /tmp/innotop-{{ innotop_version }}
+    creates: Makefile
+
+- name: Make install
+  command: make install
+  args:
+    chdir: /tmp/innotop-{{ innotop_version }}
+  changed_when: false
+
+- name: Delete temporary archive and folder
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /tmp/innotop-{{ innotop_version }}
+    - /tmp/innotop-{{ innotop_version }}.tar.gz

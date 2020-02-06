@@ -1,0 +1,14 @@
+---
+- name: Check if Innotop is already installed
+  stat:
+    path: "{{ innotop_path }}"
+  register: _innotop
+
+- name: Get Innotop installed version
+  command: "{{ innotop_path }} --version"
+  changed_when: false
+  when: _innotop.stat.exists
+  register: _innotop_version
+
+- include_tasks: setup.yml
+  when: _innotop_version is skipped or innotop_version not in _innotop_version.stdout

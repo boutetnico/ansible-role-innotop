@@ -1,9 +1,10 @@
 ---
 galaxy_info:
+  role_name: innotop
   author: Nicolas Boutet
   description: Install Innotop.
   license: MIT
-  min_ansible_version: 2.6
+  min_ansible_version: 2.7
   platforms:
     - name: Ubuntu
       versions:
@@ -11,9 +12,11 @@ galaxy_info:
         - focal
     - name: Debian
       versions:
-        - stretch
         - buster
+        - stretch
   galaxy_tags:
-    - mysql
     - innotop
+    - monitoring
+    - mysql
+    - top
 dependencies: []

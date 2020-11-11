@@ -1,12 +1,15 @@
+[![tests](https://github.com/boutetnico/ansible-role-innotop/workflows/Test%20ansible%20role/badge.svg)](https://github.com/boutetnico/ansible-role-innotop/actions?query=workflow%3A%22Test+ansible+role%22)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-boutetnico.innotop-blue.svg)](https://galaxy.ansible.com/boutetnico/innotop)
+
 ansible-role-innotop
 ====================
 
-This role installs Innotop.
+This role installs [Innotop](https://github.com/innotop/innotop).
 
 Requirements
 ------------
 
-Ansible 2.6 or newer.
+Ansible 2.7 or newer.
 
 Supported Platforms
 -------------------
@@ -19,10 +22,10 @@ Supported Platforms
 Role Variables
 --------------
 
-| Variable                     | Required | Default                         | Choices   | Comments                                |
-|------------------------------|----------|---------------------------------|-----------|-----------------------------------------|
-| innotop_version              | true     | `1.12.0`                        | string    |                                         |
-| innotop_packages             | true     |                                 | list      | See `defaults/main.yml`.                |
+| Variable                     | Required | Default                  | Choices   | Comments                         |
+|------------------------------|----------|--------------------------|-----------|----------------------------------|
+| innotop_version              | true     | `1.12.0`                 | string    |                                  |
+| innotop_packages             | true     |                          | list      | See `defaults/main.yml`.         |
 
 Dependencies
 ------------

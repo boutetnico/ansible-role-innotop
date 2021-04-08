@@ -18,7 +18,7 @@ def test_innotop_is_installed(host, path):
 
 
 @pytest.mark.parametrize('command,output', [
-  ('/usr/local/bin/innotop --version', 'innotop  Ver 1.12.0'),
+  ('/usr/local/bin/innotop --version', 'innotop  Ver 1.13.0'),
 ])
 def test_innotop_runs(host, command, output):
     stdout = host.check_output(command)

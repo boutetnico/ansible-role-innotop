@@ -24,7 +24,7 @@ Role Variables
 
 | Variable                     | Required | Default                  | Choices   | Comments                         |
 |------------------------------|----------|--------------------------|-----------|----------------------------------|
-| innotop_version              | true     | `1.12.0`                 | string    |                                  |
+| innotop_version              | true     | `1.13.0`                 | string    |                                  |
 | innotop_packages             | true     |                          | list      | See `defaults/main.yml`.         |
 
 Dependencies

@@ -1,37 +1,37 @@
 ---
 - name: Install packages needed for Innotop
-  apt:
+  ansible.builtin.apt:
     name: "{{ innotop_packages }}"
     state: present
     update_cache: true
 
 - name: Download Innotop tarball
-  get_url:
+  ansible.builtin.get_url:
     dest: /tmp
     mode: 0640
     url: https://github.com/innotop/innotop/archive/v{{ innotop_version }}.tar.gz
 
 - name: Unarchive Innotop tarball
-  unarchive:
+  ansible.builtin.unarchive:
     copy: false
     dest: /tmp
     mode: 0750
     src: /tmp/innotop-{{ innotop_version }}.tar.gz
 
 - name: Generate Innotop makefile
-  command: perl Makefile.PL
+  ansible.builtin.command: perl Makefile.PL
   args:
     chdir: /tmp/innotop-{{ innotop_version }}
     creates: Makefile
 
 - name: Make install
-  command: make install
+  ansible.builtin.command: make install
   args:
     chdir: /tmp/innotop-{{ innotop_version }}
   changed_when: false
 
 - name: Delete temporary archive and folder
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: absent
   loop:

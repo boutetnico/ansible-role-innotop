@@ -10,5 +10,6 @@
   when: _innotop.stat.exists
   register: _innotop_version
 
-- include_tasks: setup.yml
+- name: Include setup tasks
+  ansible.builtin.include_tasks: setup.yml
   when: _innotop_version is skipped or innotop_version not in _innotop_version.stdout

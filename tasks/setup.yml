@@ -8,14 +8,14 @@
 - name: Download Innotop tarball
   ansible.builtin.get_url:
     dest: /tmp
-    mode: 0640
+    mode: "0640"
     url: https://github.com/innotop/innotop/archive/v{{ innotop_version }}.tar.gz
 
 - name: Unarchive Innotop tarball
   ansible.builtin.unarchive:
     copy: false
     dest: /tmp
-    mode: 0750
+    mode: "0750"
     src: /tmp/innotop-{{ innotop_version }}.tar.gz
 
 - name: Generate Innotop makefile
